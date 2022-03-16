@@ -1,7 +1,8 @@
 import re
 import argparse
+import html
 from tokenize import String
-from typing import Dict
+from typing import Dict, List
 from lxml import etree
 
 def hdl_argument(argument: String):
@@ -15,36 +16,28 @@ def hdl_argument(argument: String):
             argument_dict[argument_split_list[i - 1]] = item
     return argument_dict
 
+def replace_garbled(content: List):
+    pass
+
 
 def change_content(fileName, **kwargs: Dict):
     new_lines = []
-    with open(f'{fileName}', 'r') as f:
+    with open(f'{fileName}', 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
-    # for key, value in kwargs.items():
-    #     for i, line in enumerate(lines):
-    #         if re.search(f'<{key}>', lines[i]):
-    #             print(list(lines[i + 1]))
-    #             temp_text = ''.join([item for item in line if item != ' '])
-    #             lines[i] = lines[i].replace(f'{temp_text}', f'<{key}>{value}</{key}>')
-    #             print(lines[i])
-    #         new_lines.append(lines[i])
-
+    for key, value in kwargs.items():
+        for i, line in enumerate(lines):
+            if re.search(f'<{key}>', lines[i]):
+                temp_text = ''.join([item for item in line if item != ' '])
+                lines[i] = lines[i].replace(f'{temp_text}', f'<{key}>{value}</{key}>')
+            new_lines.append(lines[i])
 
     str_xml = ''
     for i, line in enumerate(lines):
-        if 'numDlSlot>3<' in line:
-            pass
-            # print(list(line))
-            # print(list(lines[i + 1]))
         str_xml += line
-    # with open(f'{fileName}', 'w') as f:
-    #     f.writelines(lines)
-
     et = etree.fromstring(str_xml.encode('utf-8'))
-    # et = et.getroot()
     et = et.getroottree()
-    et.write('output.xml', pretty_print=True, encoding='utf-8')
+    et.write('output.xml', pretty_print=True)
 
 
 if __name__ == '__main__':
@@ -56,3 +49,5 @@ if __name__ == '__main__':
     file_name = args.file
     argument_dict = hdl_argument(args.tag)
     change_content(fileName=file_name, **argument_dict)
+
+    # python main.py --tag "numDlSlot 20" --file output.xml
