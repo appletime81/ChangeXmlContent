@@ -37,9 +37,12 @@ def main(fileName, tag, value):
 
 def change_data(original_root, original_tree, target_root, find, tag, value):
     elements = target_root.xpath("//*")
-    for item in elements:
-        if f'{tag}' == item.tag.replace(tag_prefix, ''):
-            item.text = value
+    values = value.split(' ')
+    tags = tag.split(' ')
+    for tag, value in zip(tags, values):
+        for item in elements:
+            if f'{tag}' == item.tag.replace(tag_prefix, ''):
+                item.text = value
     find(original_tree)[0].text = etree.tostring(target_root)
     return original_root
 
@@ -118,3 +121,4 @@ if __name__ == '__main__':
 
     # command example
     # python test_lxml_change_content.py --tag numDlSlot --value 20 --file output.xml
+    # python test_lxml_change_content.py --tag "numDlSlot numDlSymbol numUlSlot numUlSymbol" --value "20 30 40 50" --file output.xml

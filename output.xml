@@ -527,9 +527,9 @@
                </macCfgCmn>
                <cfgCmn>
                  <numDlSlot>20</numDlSlot>
-                 <numDlSymbol>12</numDlSymbol>
-                 <numUlSlot>1</numUlSlot>
-                 <numUlSymbol>0</numUlSymbol>
+                 <numDlSymbol>30</numDlSymbol>
+                 <numUlSlot>40</numUlSlot>
+                 <numUlSymbol>50</numUlSymbol>
                  <p2Pres>0</p2Pres>
                  <numDlSlotP2>3</numDlSlotP2>
                  <numDlSymbolP2>10</numDlSymbolP2>
