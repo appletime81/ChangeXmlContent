@@ -52,11 +52,7 @@
       <objectInstance>0</objectInstance>
       <vsDataType>2019-12-31</vsDataType>
       <vsDataFormatVersion>gnb_sctp_vs_config.yang</vsDataFormatVersion>
-<<<<<<< Updated upstream
-      <vsData>
-=======
       <vsData><![CDATA[
->>>>>>> Stashed changes
 	      <gnbvs xmlns="urn:rdns:com:radisys:nr:gnb">
 	       <gnbDuCfg>
             <id>0</id>
@@ -66,13 +62,8 @@
             <heartBeatIntervalInMs>5000</heartBeatIntervalInMs>
             <maxPathRetx>1</maxPathRetx>
 	       </gnbDuCfg>
-<<<<<<< Updated upstream
-	      </gnbvs>  
-         </vsData>
-=======
 	      </gnbvs>
          ]]></vsData>
->>>>>>> Stashed changes
     </vsDataContainer>
     <vsDataContainer>
        <id>1</id>
@@ -80,11 +71,7 @@
        <objectInstance>1</objectInstance>
        <vsDataType>2019-12-31</vsDataType>
        <vsDataFormatVersion>gnb_log_vs_config.yang</vsDataFormatVersion>
-<<<<<<< Updated upstream
-       <vsData>
-=======
        <vsData><![CDATA[
->>>>>>> Stashed changes
 	        <gnbvs xmlns="urn:rdns:com:radisys:nr:gnb">
 	         <gnbDuCfg>
               <id>0</id>
@@ -282,13 +269,8 @@
              <maxLogFileCount>5</maxLogFileCount>
              <enableBinLog>false</enableBinLog>
 	        </gnbDuCfg>
-<<<<<<< Updated upstream
-	      </gnbvs>  
-          </vsData>
-=======
 	      </gnbvs>
           ]]></vsData>
->>>>>>> Stashed changes
     </vsDataContainer>
     <vsDataContainer>
        <id>2</id>
@@ -296,11 +278,7 @@
        <objectInstance>2</objectInstance>
        <vsDataType>2019-12-31</vsDataType>
        <vsDataFormatVersion>gnb_du_vs_config.yang</vsDataFormatVersion>
-<<<<<<< Updated upstream
-       <vsData>
-=======
        <vsData><![CDATA[
->>>>>>> Stashed changes
 	    <gnbvs xmlns="urn:rdns:com:radisys:nr:gnb">
 	      <gnbDuCfg>
           <id>0</id>
@@ -335,13 +313,8 @@
             </F1CAlarm>
          </gnbF1cVsConfig>
 	     </gnbDuCfg>
-<<<<<<< Updated upstream
-	    </gnbvs>  
-      </vsData>
-=======
 	    </gnbvs>
       ]]></vsData>
->>>>>>> Stashed changes
       </vsDataContainer>
       <gNBDUId>##gNBDUId##</gNBDUId>
       <gNBDUName>gnb01du</gNBDUName>
@@ -419,12 +392,8 @@
            <objectInstance>0</objectInstance>
            <vsDataType>2019-12-31</vsDataType>
            <vsDataFormatVersion>gnb_cell_du_vs_config.yang</vsDataFormatVersion>
-<<<<<<< Updated upstream
-           <vsData><gnbvs xmlns="urn:rdns:com:radisys:nr:gnb">
-=======
            <vsData><![CDATA[
 	        <gnbvs xmlns="urn:rdns:com:radisys:nr:gnb">
->>>>>>> Stashed changes
 	         <gnbDuCfg>
               <id>0</id>
               <gnbCellDuVsCfg>
@@ -551,11 +520,7 @@
                  <srbCfgCmn>
                     <isSrbMappingQPSKEnb>true</isSrbMappingQPSKEnb>
                     <isScheduleRequestMappingQPSKEnb>true</isScheduleRequestMappingQPSKEnb>
-<<<<<<< Updated upstream
-                    <isSwitchToSISOEnb>true</isSwitchToSISOEnb>				 
-=======
                     <isSwitchToSISOEnb>true</isSwitchToSISOEnb>
->>>>>>> Stashed changes
                     <mcsIndexFor64QAM>3</mcsIndexFor64QAM>
                     <mcsIndexFor256QAM>2</mcsIndexFor256QAM>
                  </srbCfgCmn>
@@ -1063,11 +1028,7 @@
                  <numPucchCellGrp>0</numPucchCellGrp>
 				 <rlcCfg>
 						 <nrQfiGrp>
-<<<<<<< Updated upstream
-								 <fiveqi>0</fiveqi> 
-=======
 								 <fiveqi>0</fiveqi>
->>>>>>> Stashed changes
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1137,11 +1098,7 @@
                                  <ulLcPriority>4</ulLcPriority>
 						 </nrQfiGrp>
 						 <nrQfiGrp>
-<<<<<<< Updated upstream
-								 <fiveqi>6</fiveqi> 
-=======
 								 <fiveqi>6</fiveqi>
->>>>>>> Stashed changes
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1155,11 +1112,7 @@
                                  <ulLcPriority>4</ulLcPriority>
 						 </nrQfiGrp>
 						 <nrQfiGrp>
-<<<<<<< Updated upstream
-								 <fiveqi>8</fiveqi> 
-=======
 								 <fiveqi>8</fiveqi>
->>>>>>> Stashed changes
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1173,11 +1126,7 @@
                                  <ulLcPriority>4</ulLcPriority>
 						 </nrQfiGrp>
 						 <nrQfiGrp>
-<<<<<<< Updated upstream
-								 <fiveqi>9</fiveqi> 
-=======
 								 <fiveqi>9</fiveqi>
->>>>>>> Stashed changes
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1191,11 +1140,7 @@
                                  <ulLcPriority>4</ulLcPriority>
 						 </nrQfiGrp>
 						 <eutraQosGrp>
-<<<<<<< Updated upstream
-								 <qci>1</qci> 
-=======
 								 <qci>1</qci>
->>>>>>> Stashed changes
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1209,11 +1154,7 @@
                                  <ulLcPriority>4</ulLcPriority>
 						 </eutraQosGrp>
 						 <eutraQosGrp>
-<<<<<<< Updated upstream
-								 <qci>9</qci> 
-=======
 								 <qci>9</qci>
->>>>>>> Stashed changes
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1233,11 +1174,7 @@
                     <k1MinVal>16</k1MinVal>
                     <k2MinVal>33</k2MinVal>
                     <isLowSeMcsTableEnabled>false</isLowSeMcsTableEnabled>
-<<<<<<< Updated upstream
-                    <slotDuration>14</slotDuration> 
-=======
                     <slotDuration>14</slotDuration>
->>>>>>> Stashed changes
                  </urllcCfg>
                  <ulCfgGrant>
                     <isUlCgType1Enabled>true</isUlCgType1Enabled>
@@ -1260,12 +1197,8 @@
                  </pegaGrantPreCfgList>
               </gnbCellDuVsCfg>
 	       </gnbDuCfg>
-<<<<<<< Updated upstream
-	      </gnbvs></vsData>
-=======
 	      </gnbvs>
 	      ]]></vsData>
->>>>>>> Stashed changes
               </vsDataContainer>
         <nCI>##nrCellId##</nCI>
         <pLMNId>
