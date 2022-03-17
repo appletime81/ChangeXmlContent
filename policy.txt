@@ -1,0 +1,17 @@
+                     </gnbvs>
+</gnbvs></vsData>    ]]></vsData>
+
+-----------------------------------------------------
+
+<vsData>              <vsData><![CDATA[
+
+------------------------------------------------------
+
+    </gnbvs>              </gnbvs>
+</vsData>             ]]></vsData>
+
+---------------------------------------------------------
+                                                           <vsData><![CDATA[
+<vsData><gnbvs xmlns="urn:rdns:com:radisys:nr:gnb">            <gnbvs xmlns="urn:rdns:com:radisys:nr:gnb">
+
+
