@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <ME xmlns="urn:3gpp:tsg:sa5:nrm:ngran">
+<ME xmlns="urn:3gpp:tsg:sa5:nrm:ngran">
     <objectClass>ME</objectClass>
     <objectInstance>0</objectInstance>
     <id>0</id>
@@ -62,7 +62,7 @@
             <heartBeatIntervalInMs>5000</heartBeatIntervalInMs>
             <maxPathRetx>1</maxPathRetx>
 	       </gnbDuCfg>
-	      </gnbvs>  
+	      </gnbvs>
          ]]></vsData>
     </vsDataContainer>
     <vsDataContainer>
@@ -269,7 +269,7 @@
              <maxLogFileCount>5</maxLogFileCount>
              <enableBinLog>false</enableBinLog>
 	        </gnbDuCfg>
-	      </gnbvs>  
+	      </gnbvs>
           ]]></vsData>
     </vsDataContainer>
     <vsDataContainer>
@@ -313,7 +313,7 @@
             </F1CAlarm>
          </gnbF1cVsConfig>
 	     </gnbDuCfg>
-	    </gnbvs>  
+	    </gnbvs>
       ]]></vsData>
       </vsDataContainer>
       <gNBDUId>##gNBDUId##</gNBDUId>
@@ -341,28 +341,17 @@
         <remoteAddress>##f1uPeerIpAddr##</remoteAddress>
       </EP_F1U>
       <E2C-EP>
-          <!--
-                       New E2 interfce has been added to provide support
-        for Near-RT RIC.
-            -->
+          
         <id>0</id>
         <objectClass>EP_E2C</objectClass>
         <objectInstance>0</objectInstance>
         <userLabel>EP_E2C</userLabel>
         <farEndEntity>1</farEndEntity>
-            <!--
-                         <vsDataContainer>
-         <id></id>
-         <objectClass></objectClass>
-         <objectInstance></objectInstance>
-         <vsDataType></vsDataType>
-         <vsDataFormatVersion></vsDataFormatVersion>
-        </vsDataContainer>
-            -->
+            
         <localIpAddress>10.57.6.56</localIpAddress>
         <localVlanId>007</localVlanId>
         <remoteAddress>10.57.5.95</remoteAddress>
-        <!-- Neat-RT RIC SCTP Destination Port -->
+        
         <port>5000</port>
         <isE2FeatureEnabled>false</isE2FeatureEnabled>
       </E2C-EP>
@@ -520,16 +509,16 @@
                  <srbCfgCmn>
                     <isSrbMappingQPSKEnb>true</isSrbMappingQPSKEnb>
                     <isScheduleRequestMappingQPSKEnb>true</isScheduleRequestMappingQPSKEnb>
-                    <isSwitchToSISOEnb>true</isSwitchToSISOEnb>				 
+                    <isSwitchToSISOEnb>true</isSwitchToSISOEnb>
                     <mcsIndexFor64QAM>3</mcsIndexFor64QAM>
                     <mcsIndexFor256QAM>2</mcsIndexFor256QAM>
                  </srbCfgCmn>
                </macCfgCmn>
                <cfgCmn>
-                 <numDlSlot>3</numDlSlot>
-                 <numDlSymbol>12</numDlSymbol>
-                 <numUlSlot>1</numUlSlot>
-                 <numUlSymbol>0</numUlSymbol>
+                 <numDlSlot>None</numDlSlot>
+                 <numDlSymbol>None</numDlSymbol>
+                 <numUlSlot>None</numUlSlot>
+                 <numUlSymbol>None</numUlSymbol>
                  <p2Pres>0</p2Pres>
                  <numDlSlotP2>3</numDlSlotP2>
                  <numDlSymbolP2>10</numDlSymbolP2>
@@ -1028,7 +1017,7 @@
                  <numPucchCellGrp>0</numPucchCellGrp>
 				 <rlcCfg>
 						 <nrQfiGrp>
-								 <fiveqi>0</fiveqi> 
+								 <fiveqi>0</fiveqi>
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1098,7 +1087,7 @@
                                  <ulLcPriority>4</ulLcPriority>
 						 </nrQfiGrp>
 						 <nrQfiGrp>
-								 <fiveqi>6</fiveqi> 
+								 <fiveqi>6</fiveqi>
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1112,7 +1101,7 @@
                                  <ulLcPriority>4</ulLcPriority>
 						 </nrQfiGrp>
 						 <nrQfiGrp>
-								 <fiveqi>8</fiveqi> 
+								 <fiveqi>8</fiveqi>
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1126,7 +1115,7 @@
                                  <ulLcPriority>4</ulLcPriority>
 						 </nrQfiGrp>
 						 <nrQfiGrp>
-								 <fiveqi>9</fiveqi> 
+								 <fiveqi>9</fiveqi>
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1140,7 +1129,7 @@
                                  <ulLcPriority>4</ulLcPriority>
 						 </nrQfiGrp>
 						 <eutraQosGrp>
-								 <qci>1</qci> 
+								 <qci>1</qci>
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1154,7 +1143,7 @@
                                  <ulLcPriority>4</ulLcPriority>
 						 </eutraQosGrp>
 						 <eutraQosGrp>
-								 <qci>9</qci> 
+								 <qci>9</qci>
 								 <snFieldLenUlAm>am_size12</snFieldLenUlAm>
 								 <snFieldLenDlAm>am_size12</snFieldLenDlAm>
 								 <snFieldLenUlUm>um_size12</snFieldLenUlUm>
@@ -1174,7 +1163,7 @@
                     <k1MinVal>16</k1MinVal>
                     <k2MinVal>33</k2MinVal>
                     <isLowSeMcsTableEnabled>false</isLowSeMcsTableEnabled>
-                    <slotDuration>14</slotDuration> 
+                    <slotDuration>14</slotDuration>
                  </urllcCfg>
                  <ulCfgGrant>
                     <isUlCgType1Enabled>true</isUlCgType1Enabled>
@@ -1197,7 +1186,7 @@
                  </pegaGrantPreCfgList>
               </gnbCellDuVsCfg>
 	       </gnbDuCfg>
-	      </gnbvs>  
+	      </gnbvs>
               ]]></vsData>
               </vsDataContainer>
         <nCI>##nrCellId##</nCI>
@@ -1217,79 +1206,7 @@
         <bSChannelBwUL>1</bSChannelBwUL>
         <bSChannelBwSUL>1</bSChannelBwSUL>
      </NRCellDU>
-     <!--
-                <NRSectorCarrier>
-        <id>0</id>
-        <objectClass>NRSectorCarrier</objectClass>
-        <objectInstance>0</objectInstance>
-        <userLabel>NRSectorCarrier</userLabel>
-        <vnfParametersList>
-          <vnfInstanceId></vnfInstanceId>
-          <vnfdId></vnfdId>
-          <flavourId></flavourId>
-          <autoScalable></autoScalable>
-       </vnfParametersList>
-        <peeParametersList>
-           <siteIdentification>Tech Park</siteIdentification>
-           <siteLatitude>12.9781</siteLatitude>
-           <siteLongitude>77.6653</siteLongitude>
-           <siteDescription>prestige tech park</siteDescription>
-           <equipmentType>RRU</equipmentType>
-           <environmentType>Outdoor</environmentType>
-           <powerInterface>AC</powerInterface>
-        </peeParametersList>
-        <vsDataContainer>
-          <id>0</id>
-          <objectClass>vsDataContainer</objectClass>
-          <objectInstance>0</objectInstance>
-          <vsDataType></vsDataType>
-          <vsDataFormatVersion></vsDataFormatVersion>
-        </vsDataContainer>
-        <txDirection>DL and UL</txDirection>
-        <configuredMaxTxPower>1</configuredMaxTxPower>
-        <arfcnDL>2079415</arfcnDL>
-        <arfcnUL>2079415</arfcnUL>
-        <bSChannelBwDL>100MHZ</bSChannelBwDL>
-        <bSChannelBwUL>100MHZ</bSChannelBwUL>
-        <sectorEquipmentFunction>1</sectorEquipmentFunction>
-     </NRSectorCarrier>
-     -->
-     <!-- BWP commented
-                <BWP>
-        <id>0</id>
-        <objectClass>BWP</objectClass>
-        <objectInstance>0</objectInstance>
-        <userLabel>BWP</userLabel>
-        <vnfParametersList>
-          <vnfInstanceId></vnfInstanceId>
-          <vnfdId></vnfdId>
-          <flavourId></flavourId>
-          <autoScalable></autoScalable>
-        </vnfParametersList>
-        <peeParametersList>
-           <siteIdentification>Tech Park</siteIdentification>
-           <siteLatitude>12.9781</siteLatitude>
-           <siteLongitude>77.6653</siteLongitude>
-           <siteDescription>prestige tech park</siteDescription>
-           <equipmentType>RRU</equipmentType>
-           <environmentType>Outdoor</environmentType>
-           <powerInterface>AC</powerInterface>
-        </peeParametersList>
-        <vsDataContainer>
-          <id>0</id>
-          <objectClass>vsDataContainer</objectClass>
-          <objectInstance>0</objectInstance>
-          <vsDataType></vsDataType>
-          <vsDataFormatVersion></vsDataFormatVersion>
-        </vsDataContainer>
-        <bwpContext>DL</bwpContext>
-        <isInitialBwp>INITIAL</isInitialBwp>
-        <subCarrierSpacing>15</subCarrierSpacing>
-        <cyclicPrefix>NORMAL</cyclicPrefix>
-        <startRB>1</startRB>
-        <numberOfRBs>273</numberOfRBs>
-     </BWP>
-     -->
+     
+     
     </GNBDUFunction>
  </ME>
-

@@ -4,8 +4,8 @@ import xml.etree.ElementTree as ET
 
 # 全局變數
 unique_id = 1
-input_file_name = 'oam_sysrepo_du.xml'
-output_file_name = 'oam_sysrepo_du.xml'
+input_file_name = 'oam_template_du_wnc.xml'
+output_file_name = 'oam_template_du_wnc.xml'
 root = ET.parse(input_file_name).getroot()
 
 # get environment variables
@@ -14,11 +14,6 @@ NUMDLSYMBOL = os.environ.get('NUMDLSYMBOL')
 NUMULSLOT = os.environ.get('NUMULSLOT')
 NUMULSYMBOL = os.environ.get('NUMULSYMBOL')
 
-
-# NUMDLSLOT = 888
-# NUMDLSYMBOL = 888
-# NUMULSLOT = 888
-# NUMULSYMBOL = 888
 
 
 # 遍歷所有的節點
@@ -41,6 +36,7 @@ def walkData(root_node, level, result_list):
         root_node.text = root_node.text.replace(numUlSymbolPart, f'<numUlSymbol>{NUMULSYMBOL}</numUlSymbol>')
 
     temp_list = [unique_id, level, root_node.tag, root_node.attrib, root_node.text]
+    print(unique_id, level, root_node.tag, root_node.attrib, root_node.text)
     result_list.append(temp_list)
     unique_id += 1
 
@@ -58,7 +54,7 @@ def getXmlData(file_name):
     result_list = []
     walkData(root, level, result_list)
     tree = ET.ElementTree(root)
-    tree.write('output2.xml')
+    tree.write(file_name)
     return result_list
 
 
