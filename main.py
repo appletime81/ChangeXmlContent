@@ -1,58 +1,90 @@
+import os
 import re
-import argparse
-from tokenize import String
-from typing import Dict
-from lxml import etree
+import xml.etree.ElementTree as ET
 
-def hdl_argument(argument: String):
-    argument = argument.strip()
-    argument_split_list = argument.split(' ')
-    argument_dict = dict()
-    for i, item in enumerate(argument_split_list):
-        if i % 2 == 0:
-            argument_dict[item] = None
-        if i % 2 == 1:
-            argument_dict[argument_split_list[i - 1]] = item
-    return argument_dict
+# 全局變數
+unique_id = 1
+input_file_name = "/home/pegauser/synergy/config/oam_sysrepo_du.xml"
+output_file_name = "/home/pegauser/synergy/config/oam_sysrepo_du.xml"
+root = ET.parse(input_file_name).getroot()
+
+# get environment variables
+NUMDLSLOT = os.environ.get("NUMDLSLOT")
+NUMDLSYMBOL = os.environ.get("NUMDLSYMBOL")
+NUMULSLOT = os.environ.get("NUMULSLOT")
+NUMULSYMBOL = os.environ.get("NUMULSYMBOL")
 
 
-def change_content(fileName, **kwargs: Dict):
+# 遍歷所有的節點
+def walkData(root_node, level, result_list):
+    global unique_id
+
+    if unique_id == 111 and level == 5 and "vsData" in root_node.tag and NUMDLSLOT and NUMDLSYMBOL and NUMULSLOT and NUMULSYMBOL:
+        numDlSlotPart = root_node.text[re.search(f"<numDlSlot>\d+</numDlSlot>", root_node.text).start():re.search(
+            f"<numDlSlot>\d+</numDlSlot>", root_node.text).end()]
+        numDlSymbolPart = root_node.text[re.search(f"<numDlSymbol>\d+</numDlSymbol>", root_node.text).start():re.search(
+            f"<numDlSymbol>\d+</numDlSymbol>", root_node.text).end()]
+        numUlSlotPart = root_node.text[re.search(f"<numUlSlot>\d+</numUlSlot>", root_node.text).start():re.search(
+            f"<numUlSlot>\d+</numUlSlot>", root_node.text).end()]
+        numUlSymbolPart = root_node.text[re.search(f"<numUlSymbol>\d+</numUlSymbol>", root_node.text).start():re.search(
+            f"<numUlSymbol>\d+</numUlSymbol>", root_node.text).end()]
+
+        root_node.text = root_node.text.replace(numDlSlotPart, f"<numDlSlot>{NUMDLSLOT}</numDlSlot>")
+        root_node.text = root_node.text.replace(numDlSymbolPart, f"<numDlSymbol>{NUMDLSYMBOL}</numDlSymbol>")
+        root_node.text = root_node.text.replace(numUlSlotPart, f"<numUlSlot>{NUMULSLOT}</numUlSlot>")
+        root_node.text = root_node.text.replace(numUlSymbolPart, f"<numUlSymbol>{NUMULSYMBOL}</numUlSymbol>")
+
+    temp_list = [unique_id, level, root_node.tag, root_node.attrib, root_node.text]
+    result_list.append(temp_list)
+    unique_id += 1
+
+    # 遍歷每個子節點
+    children_node = root_node.getchildren()
+    if len(children_node) == 0:
+        return
+    for child in children_node:
+        walkData(child, level + 1, result_list)
+    return
+
+
+def getXmlData(file_name):
+    level = 1  # 節點的深度從1開始
+    result_list = []
+    walkData(root, level, result_list)
+    tree = ET.ElementTree(root)
+    tree.write(file_name)
+
+
+def replace_text(file_name):
     new_lines = []
-    with open(f'{fileName}', 'r') as f:
+    with open(f"{file_name}", "r") as f:
         lines = f.readlines()
 
-    # for key, value in kwargs.items():
-    #     for i, line in enumerate(lines):
-    #         if re.search(f'<{key}>', lines[i]):
-    #             print(list(lines[i + 1]))
-    #             temp_text = ''.join([item for item in line if item != ' '])
-    #             lines[i] = lines[i].replace(f'{temp_text}', f'<{key}>{value}</{key}>')
-    #             print(lines[i])
-    #         new_lines.append(lines[i])
+    for i in range(len(lines)):
+        lines[i] = lines[i].replace("&lt;", "<").replace("&gt;", ">").replace("ns0:", "").replace(":ns0", "")
+
+    for i in range(len(lines)):
+        if "</gnbvs></vsData>" in lines[i]:
+            new_lines.append(lines[i].replace("</gnbvs></vsData>", "</gnbvs>"))
+            new_lines.append(lines[i].replace("</gnbvs></vsData>", "]]></vsData>"))
+        elif "</vsData>" in lines[i] and lines[i].count("<") == 1 and lines[i].count(">") == 1:
+            lines[i] = lines[i].replace("</vsData>", "]]></vsData>")
+            new_lines.append(lines[i])
+        elif "<vsData>" in lines[i] and lines[i].count("<") == 1 and lines[i].count(">") == 1:
+            lines[i] = lines[i].replace("<vsData>", "<vsData><![CDATA[")
+            new_lines.append(lines[i])
+        elif '<vsData><gnbvs xmlns="urn:rdns:com:radisys:nr:gnb">' in lines[i]:
+            new_lines.append("           <vsData><![CDATA[\n")
+            new_lines.append('	        <gnbvs xmlns="urn:rdns:com:radisys:nr:gnb">\n')
+        else:
+            new_lines.append(lines[i])
+
+    new_lines = ['<?xml version="1.0" encoding="UTF-8"?>\n'] + new_lines
+
+    with open(f"{file_name}", "w") as f:
+        f.writelines(new_lines)
 
 
-    str_xml = ''
-    for i, line in enumerate(lines):
-        if 'numDlSlot>3<' in line:
-            pass
-            # print(list(line))
-            # print(list(lines[i + 1]))
-        str_xml += line
-    # with open(f'{fileName}', 'w') as f:
-    #     f.writelines(lines)
-
-    et = etree.fromstring(str_xml.encode('utf-8'))
-    # et = et.getroot()
-    et = et.getroottree()
-    et.write('output.xml', pretty_print=True, encoding='utf-8')
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--tag', default=None,
-                        help='輸入要更改的標籤及數值，若需更改多個標籤請以空格分開，並以""刮起來 --> 例: "tag_name1 20 tag_name2 30..."')
-    parser.add_argument('--file', default=None, help='輸入檔名 --> 例: xxx.xml')
-    args = parser.parse_args()
-    file_name = args.file
-    argument_dict = hdl_argument(args.tag)
-    change_content(fileName=file_name, **argument_dict)
+if __name__ == "__main__":
+    getXmlData(file_name=input_file_name)
+    replace_text(file_name=output_file_name)

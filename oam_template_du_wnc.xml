@@ -515,10 +515,10 @@
                  </srbCfgCmn>
                </macCfgCmn>
                <cfgCmn>
-                 <numDlSlot>None</numDlSlot>
-                 <numDlSymbol>None</numDlSymbol>
-                 <numUlSlot>None</numUlSlot>
-                 <numUlSymbol>None</numUlSymbol>
+                 <numDlSlot>888</numDlSlot>
+                 <numDlSymbol>888</numDlSymbol>
+                 <numUlSlot>888</numUlSlot>
+                 <numUlSymbol>888</numUlSymbol>
                  <p2Pres>0</p2Pres>
                  <numDlSlotP2>3</numDlSlotP2>
                  <numDlSymbolP2>10</numDlSymbolP2>
