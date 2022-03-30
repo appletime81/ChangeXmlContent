@@ -515,15 +515,15 @@
                  </srbCfgCmn>
                </macCfgCmn>
                <cfgCmn>
-                 <numDlSlot>888</numDlSlot>
-                 <numDlSymbol>888</numDlSymbol>
-                 <numUlSlot>888</numUlSlot>
-                 <numUlSymbol>888</numUlSymbol>
+                 <numDlSlot>3</numDlSlot>
+                 <numDlSymbol>12</numDlSymbol>
+                 <numUlSlot>1</numUlSlot>
+                 <numUlSymbol>0</numUlSymbol>
                  <p2Pres>0</p2Pres>
                  <numDlSlotP2>3</numDlSlotP2>
-                 <numDlSymbolP2>10</numDlSymbolP2>
+                 <numDlSymbolP2>12</numDlSymbolP2>
                  <numUlSlotP2>1</numUlSlotP2>
-                 <numUlSymbolP2>2</numUlSymbolP2>
+                 <numUlSymbolP2>0</numUlSymbolP2>
                </cfgCmn>
                <dlCfgCmn>
                  <dlBwpCfg>
@@ -705,7 +705,7 @@
                     <simultaneousHarqAckCsi>false</simultaneousHarqAckCsi>
                     <rachCfgInfo>
                        <rachGenCfg>
-                          <prachCfgIdx>106</prachCfgIdx>
+                          <prachCfgIdx>145</prachCfgIdx>
                           <msg1Fdm>1</msg1Fdm>
                           <msg1FreqStart>0</msg1FreqStart>
                           <zeroCorrelationZoneCfg>15</zeroCorrelationZoneCfg>
@@ -798,7 +798,7 @@
                  <nUlCarrierK0>1</nUlCarrierK0>
                  <prachCfg>
                     <l1PrachCfgInfoRootSeqIdx>0</l1PrachCfgInfoRootSeqIdx>
-                    <prachCfgIdx>159</prachCfgIdx>
+                    <prachCfgIdx>145</prachCfgIdx>
                     <zeroCorrelationZoneCfg>15</zeroCorrelationZoneCfg>
                     <highSpeedFlag>false</highSpeedFlag>
                     <prachFreqOffset>0</prachFreqOffset>
