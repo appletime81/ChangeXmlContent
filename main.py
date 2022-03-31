@@ -3,10 +3,14 @@ import re
 import xml.etree.ElementTree as ET
 
 # 全局變數
-unique_id = 1
+unique_id_for_find_node = 1
+unique_id_for_change_content = 1
+node_ids = []
+levels = []
 input_file_name = "oam_template_du_wnc.xml"
 output_file_name = "oam_template_du_wnc.xml"
-root = ET.parse(input_file_name).getroot()
+root_for_find_node = ET.parse(input_file_name).getroot()
+root_for_change_content = ET.parse(input_file_name).getroot()
 
 # NUMSLOTPARAMS = os.environ.get("NUMSLOTPARAMS")
 NUMSLOTPARAMS = "1"
@@ -123,10 +127,10 @@ case_params_dict = {
 
 
 # 遍歷所有的節點
-def walkData(root_node, level, result_list):
-    global unique_id
+def change_data(root_node, level, result_list):
+    global unique_id_for_change_content
 
-    if unique_id == 121 and level == 5 and "vsData" in root_node.tag:
+    if unique_id_for_change_content == max(node_ids) and level == max(levels) and "vsData" in root_node.tag:
         params_dict = case_params_dict.get(NUMSLOTPARAMS)
         print(f"Your slot case is {case_name_dict.get(NUMSLOTPARAMS)}")
         for param_name, value in params_dict.items():
@@ -140,9 +144,28 @@ def walkData(root_node, level, result_list):
                     tempResult, f"<{param_name}>{value}</{param_name}>"
                 )
 
-    temp_list = [unique_id, level, root_node.tag, root_node.attrib, root_node.text]
+    temp_list = [unique_id_for_change_content, level, root_node.tag, root_node.attrib, root_node.text]
     result_list.append(temp_list)
-    unique_id += 1
+    unique_id_for_change_content += 1
+
+    # 遍歷每個子節點
+    children_node = root_node
+    if len(list(children_node)) == 0:
+        return
+    for child in list(children_node):
+        change_data(child, level + 1, result_list)
+    return
+
+def walkData(root_node, level, result_list):
+    global unique_id_for_find_node
+
+    if "vsData" in root_node.tag:
+        node_ids.append(unique_id_for_find_node)
+        levels.append(level)
+
+    temp_list = [unique_id_for_find_node, level, root_node.tag, root_node.attrib, root_node.text]
+    result_list.append(temp_list)
+    unique_id_for_find_node += 1
 
     # 遍歷每個子節點
     children_node = root_node
@@ -154,10 +177,13 @@ def walkData(root_node, level, result_list):
 
 
 def getXmlData(file_name):
-    level = 1  # 節點的深度從1開始
-    result_list = []
-    walkData(root, level, result_list)
-    tree = ET.ElementTree(root)
+    level_for_find_node = 1  # 節點的深度從1開始
+    level_for_change_content = 1
+    result_list_for_find_node = []
+    result_list_for_change_content = []
+    walkData(root_for_find_node, level_for_find_node, result_list_for_find_node)
+    change_data(root_for_change_content, level_for_change_content, result_list_for_change_content)
+    tree = ET.ElementTree(root_for_change_content)
     tree.write(file_name)
 
 
@@ -209,3 +235,5 @@ if __name__ == "__main__":
     if NUMSLOTPARAMS:
         getXmlData(file_name=input_file_name)
         replace_text(file_name=output_file_name)
+    print(node_ids)
+    print(levels)
