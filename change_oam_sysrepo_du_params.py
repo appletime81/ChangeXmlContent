@@ -7,8 +7,8 @@ unique_id_for_find_node = 1
 unique_id_for_change_content = 1
 node_ids = []
 levels = []
-input_file_name = "/tmp/config/config.xml"
-output_file_name = "/tmp/config/config.xml"
+input_file_name = "oam_template_du_wnc.xml"
+output_file_name = "oam_template_du_wnc.xml"
 root_for_find_node = ET.parse(input_file_name).getroot()
 root_for_change_content = ET.parse(input_file_name).getroot()
 
@@ -259,3 +259,5 @@ if __name__ == "__main__":
     if args.slot:
         getXmlData(file_name=input_file_name)
         replace_text(file_name=output_file_name)
+    else:
+        print("doing nothing")
