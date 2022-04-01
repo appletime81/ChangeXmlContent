@@ -1,18 +1,16 @@
 import re
 import xml.etree.ElementTree as ET
+import argparse
 
 # 全局變數
 unique_id_for_find_node = 1
 unique_id_for_change_content = 1
 node_ids = []
 levels = []
-input_file_name = "/home/pegauser/synergy/config/oam_sysrepo_du.xml"
-output_file_name = "/home/pegauser/synergy/config/oam_sysrepo_du.xml"
+input_file_name = "/tmp/config/config.xml"
+output_file_name = "/tmp/config/config.xml"
 root_for_find_node = ET.parse(input_file_name).getroot()
 root_for_change_content = ET.parse(input_file_name).getroot()
-
-# NUMSLOTPARAMS = os.environ.get("NUMSLOTPARAMS")
-NUMSLOTPARAMS = "1"
 
 case_name_dict = {
     "1": "DDDSU",
@@ -129,9 +127,13 @@ case_params_dict = {
 def change_data(root_node, level, result_list):
     global unique_id_for_change_content
 
-    if unique_id_for_change_content == max(node_ids) and level == max(levels) and "vsData" in root_node.tag:
-        params_dict = case_params_dict.get(NUMSLOTPARAMS)
-        print(f"Your slot case is {case_name_dict.get(NUMSLOTPARAMS)}")
+    if (
+        unique_id_for_change_content == max(node_ids)
+        and level == max(levels)
+        and "vsData" in root_node.tag
+    ):
+        params_dict = case_params_dict.get(args.slot)
+        print(f"Your slot case is {case_name_dict.get(args.slot)}")
         for param_name, value in params_dict.items():
 
             tempResultList = re.findall(
@@ -143,7 +145,13 @@ def change_data(root_node, level, result_list):
                     tempResult, f"<{param_name}>{value}</{param_name}>"
                 )
 
-    temp_list = [unique_id_for_change_content, level, root_node.tag, root_node.attrib, root_node.text]
+    temp_list = [
+        unique_id_for_change_content,
+        level,
+        root_node.tag,
+        root_node.attrib,
+        root_node.text,
+    ]
     result_list.append(temp_list)
     unique_id_for_change_content += 1
 
@@ -155,6 +163,7 @@ def change_data(root_node, level, result_list):
         change_data(child, level + 1, result_list)
     return
 
+
 def walkData(root_node, level, result_list):
     global unique_id_for_find_node
 
@@ -162,7 +171,13 @@ def walkData(root_node, level, result_list):
         node_ids.append(unique_id_for_find_node)
         levels.append(level)
 
-    temp_list = [unique_id_for_find_node, level, root_node.tag, root_node.attrib, root_node.text]
+    temp_list = [
+        unique_id_for_find_node,
+        level,
+        root_node.tag,
+        root_node.attrib,
+        root_node.text,
+    ]
     result_list.append(temp_list)
     unique_id_for_find_node += 1
 
@@ -181,7 +196,11 @@ def getXmlData(file_name):
     result_list_for_find_node = []
     result_list_for_change_content = []
     walkData(root_for_find_node, level_for_find_node, result_list_for_find_node)
-    change_data(root_for_change_content, level_for_change_content, result_list_for_change_content)
+    change_data(
+        root_for_change_content,
+        level_for_change_content,
+        result_list_for_change_content,
+    )
     tree = ET.ElementTree(root_for_change_content)
     tree.write(file_name)
 
@@ -231,6 +250,12 @@ def replace_text(file_name):
 
 
 if __name__ == "__main__":
-    if NUMSLOTPARAMS:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--slot",
+        default=None,
+    )
+    args = parser.parse_args()
+    if args.slot:
         getXmlData(file_name=input_file_name)
         replace_text(file_name=output_file_name)
